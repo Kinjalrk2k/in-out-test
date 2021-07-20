@@ -1,6 +1,6 @@
 {
   "name": "in-out-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple CLI Application to run test cases through stdin and stdout",
   "main": "bin/index.js",
   "bin": {
