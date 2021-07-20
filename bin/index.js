@@ -57,14 +57,34 @@ try {
       if (inFiles[i].index === outFiles[o].index) {
         ioTargetFiles.push({
           index: inFiles[i].index,
-          in: inFiles[i].in,
-          out: outFiles[o].out,
+          in: path.join(process.cwd(), "io", inFiles[i].in),
+          out: path.join(process.cwd(), "io", outFiles[o].out),
         });
       }
     }
   }
 
-  console.log(chalk.grey(`Found ${ioTargetFiles.length} in-out-test files`));
+  const ioTestsLength = ioTargetFiles.length;
+  console.log(chalk.grey(`Found ${ioTestsLength} in-out-test files`));
+
+  ioTargetFiles.forEach((io, idx) => {
+    const input = fs.readFileSync(io.in).toString();
+
+    const output = execSync(config.run, {
+      stdio: "pipe",
+      input,
+    }).toString();
+
+    const expectedOutput = fs.readFileSync(io.out).toString();
+
+    if (output === expectedOutput) {
+      console.log(
+        chalk.green(`Passed Test Case [${idx + 1}/${ioTestsLength}]`)
+      );
+    } else {
+      console.log(chalk.red(`Failed Test Case [${idx + 1}/${ioTestsLength}]`));
+    }
+  });
 } catch (err) {
   console.log(chalk.red(err));
   process.exit(1);
