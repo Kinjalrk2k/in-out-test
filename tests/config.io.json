@@ -1,0 +1,4 @@
+{
+  "compile": "g++ main.c -o main",
+  "run": "./main"
+}

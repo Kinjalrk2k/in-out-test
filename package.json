@@ -1,0 +1,21 @@
+{
+  "name": "in-out-test",
+  "version": "1.0.0",
+  "description": "Simple CLI Application to run test cases through stdin and stdout",
+  "main": "bin/index.js",
+  "bin": {
+    "inout": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node .",
+    "install:cli": "npm install -g .",
+    "uninstall:cli": "npm uninstall -g in-out-test",
+    "reinstall:cli": "npm run install:cli && npm run install:cli"
+  },
+  "author": "Kinjal Raykarmakar",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.1"
+  }
+}
