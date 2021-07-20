@@ -3,9 +3,10 @@
 const path = require("path");
 const fs = require("fs");
 const process = require("process");
-const { promisify } = require("util");
 const { execSync } = require("child_process");
+require("colors");
 const chalk = require("chalk");
+const boxen = require("boxen");
 
 const configFileName = "config.io.json";
 
@@ -57,6 +58,8 @@ try {
       if (inFiles[i].index === outFiles[o].index) {
         ioTargetFiles.push({
           index: inFiles[i].index,
+          inFileName: inFiles[i].in,
+          outFileName: outFiles[o].out,
           in: path.join(process.cwd(), "io", inFiles[i].in),
           out: path.join(process.cwd(), "io", outFiles[o].out),
         });
@@ -68,21 +71,28 @@ try {
   console.log(chalk.grey(`Found ${ioTestsLength} in-out-test files`));
 
   ioTargetFiles.forEach((io, idx) => {
-    const input = fs.readFileSync(io.in).toString();
+    const input = fs.readFileSync(io.in).toString().trim();
 
     const output = execSync(config.run, {
       stdio: "pipe",
       input,
-    }).toString();
+    })
+      .toString()
+      .trim();
 
-    const expectedOutput = fs.readFileSync(io.out).toString();
+    const expectedOutput = fs.readFileSync(io.out).toString().trim();
 
     if (output === expectedOutput) {
       console.log(
         chalk.green(`Passed Test Case [${idx + 1}/${ioTestsLength}]`)
       );
     } else {
-      console.log(chalk.red(`Failed Test Case [${idx + 1}/${ioTestsLength}]`));
+      const errMsg =
+        chalk.red(`Failed Test Case [${idx + 1}/${ioTestsLength}]`) +
+        " => " +
+        chalk.blue(`Files(${io.inFileName}/${io.outFileName})`);
+
+      console.log(errMsg);
     }
   });
 } catch (err) {
