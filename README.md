@@ -49,3 +49,9 @@ inout
 
 - Run the above command on the root directory to discover test cases from _`io`_ directory and run them
 - If `compile` field is specified in the `config.io.json`, then it is run first before the `run` field
+
+### 4. Output
+
+![screenshot](./assets/ss.png)
+
+> The files with the failed test cases are shown in the output!
