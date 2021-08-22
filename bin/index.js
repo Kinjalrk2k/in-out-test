@@ -6,7 +6,7 @@ const process = require("process");
 const { execSync } = require("child_process");
 // require("colors");
 const chalk = require("chalk");
-const boxen = require("boxen");
+// const boxen = require("boxen");
 
 const configFileName = "config.io.json";
 
