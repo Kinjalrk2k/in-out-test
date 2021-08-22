@@ -4,9 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const process = require("process");
 const { execSync } = require("child_process");
-// require("colors");
 const chalk = require("chalk");
-// const boxen = require("boxen");
 
 const configFileName = "config.io.json";
 
