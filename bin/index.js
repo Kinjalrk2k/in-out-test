@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const process = require("process");
 const { execSync } = require("child_process");
-require("colors");
+// require("colors");
 const chalk = require("chalk");
 const boxen = require("boxen");
 

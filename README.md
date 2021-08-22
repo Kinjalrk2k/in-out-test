@@ -8,7 +8,7 @@
 Install globally in your system using:
 
 ```bash
-npm install in-out-test
+npm install -g in-out-test
 ```
 
 ## Usage
@@ -39,7 +39,7 @@ Specify the `compile` and `run` commands here
 }
 ```
 
-> `compile` filed is not mandatory
+> `compile` field is not mandatory
 
 ### 3. Run
 
@@ -48,4 +48,4 @@ inout
 ```
 
 - Run the above command on the root directory to discover test cases from _`io`_ directory and run them
-- If `compile` filed is specified in the `config.io.json`, then it is run first before the `run` field
+- If `compile` field is specified in the `config.io.json`, then it is run first before the `run` field
