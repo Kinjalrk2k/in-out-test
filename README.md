@@ -30,12 +30,14 @@ npm install -g in-out-test
 
 ### 2. `config.io.json`
 
-Specify the `compile` and `run` commands here
+Specify the `compile`, `run`, `compile_java` and `run_java` commands here.
 
 ```json
 {
   "compile": "g++ main.cpp -o main",
-  "run": "main"
+  "compile_java": "javac main.java",
+  "run": "main",
+  "run_java": "java main"
 }
 ```
 
