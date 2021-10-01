@@ -1,4 +1,6 @@
 {
-  "compile": "g++ main.cpp -o main",
-  "run": "main"
+  "compile_cpp": "g++ main.cpp -o main",
+  "compile_java": "javac main.java",
+  "run": "main",
+  "run_java": "java main"
 }
