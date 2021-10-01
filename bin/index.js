@@ -19,9 +19,9 @@ if (!fs.existsSync(configPath)) {
 config = require(configPath);
 // console.log(config);
 
-if (config.compile_cpp) {
+if (config.compile) {
 	try {
-		execSync(config.compile_cpp, { stdio: 'pipe' });
+		execSync(config.compile, { stdio: 'pipe' });
 		console.log(chalk.yellow('CPP file Compilation successful!'));
 	} catch (err) {
 		console.log(chalk.red(err.stderr.toString()));
